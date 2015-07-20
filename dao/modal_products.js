@@ -29,7 +29,7 @@ var modal_products = {
         var connection = data.dataProvider.getSqlConnection();
         
         var productList = [];
-        var sqlStatement = 'SELECT `id`, `name`, `desc`, `price` FROM `products` WHERE `catid` = '+id+' ORDER BY `date_added`';
+        var sqlStatement = 'SELECT `id`, `name`, `desc`, `price`, `image` FROM `products` WHERE `catid` = '+id+' ORDER BY `date_added`';
         if (connection) {
             
             connection.query(sqlStatement, function(err, rows, fields){
@@ -94,11 +94,11 @@ var modal_products = {
         
     },
     
-    addNewProduct : function (name, catid, desc, content, price, date_added, user_added, callback) {
+    addNewProduct : function (name, catid, desc, content, price, date_added, user_added, image, callback) {
         
         var connection = data.dataProvider.getSqlConnection();
         
-        var sqlStatement = "INSERT INTO `products` VALUES (-1, '"+name+"', "+catid+", '"+desc+"', '"+content+"', "+price+",  '"+date_added+"', NULL, "+user_added+", NULL)";
+        var sqlStatement = "INSERT INTO `products` VALUES (-1, '"+name+"', "+catid+", '"+desc+"', '"+content+"', "+price+",  '"+date_added+"', NULL, "+user_added+", NULL, '"+image+"')";
         if (connection) {
             
             connection.query(sqlStatement, function(err, result) {

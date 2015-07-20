@@ -4,6 +4,9 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var async = require('async');
+//var multer = require('multer');
+//var upload = multer({ dest: './public/uploads/' });
 
 var routes = require('./routes/index');
 
@@ -24,7 +27,12 @@ app.use(session({
   secret: 'Nguyen quang Thuc'
 }));
 
+//app.use(upload.single("image"));
+
 app.use('/', routes);
+
+//app.use(app.router);
+//routes.initialize(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
