@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <% include template/header.ejs %>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">ExpressJS</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/">Trang chủ</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="<% if(categoryList.length > 0){ %>/cat/<%=categoryList[0].id %>.html<% } else { %>javascript:void(0)<% } %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sản phẩm <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                
+                            <% if(typeof(categoryList) !== 'undefined'){ %>
+                        
+                                <% categoryList.forEach(function (category){ %>
+                                
+                                    <li><a href="/cat/<%= category.id %>.html"><%= category.name %></a></li>
+                                
+                                <% }); %>
+                            
+                            <% } %>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <p class="lead">ExpressJS</p>
+                    <div class="list-group">
+                        <% if(typeof(categoryList) !== 'undefined'){ %>
+                            
+                            <% categoryList.forEach(function (category){ %>
+                            
+                                <a href="/cat/<%= category.id %>.html" class="list-group-item"><%= category.name %></a>
+                            
+                            <% }); %>
+                        
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+
+                    <div class="row">
+                    
+                        <% if(typeof(newestProductList) !== 'undefined' && newestProductList.length > 0){ %>
+                            
+                            <% newestProductList.forEach(function (product){ %>
+                            
+                            <div class="col-sm-4 col-lg-4 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="http://placehold.it/320x150" alt="<%= product.name %>">
+                                    <div class="caption">
+                                        <h4 class="pull-right">$<%= product.price %></h4>
+                                        <h4><a href="/detail/<%= product.id %>.html"><%= product.name %></a></h4>
+                                        <p><%= product.desc %></p>
+                                    </div>
+                                    <div class="ratings">
+                                        <p class="pull-right">3 đánh giá</p>
+                                        <p>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <% }); %>
+                        
+                        <% } else { %>
+                        
+                            <p>Không có sản phẩm nào.</p>
+                        
+                        <% } %>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+        <div class="container">
+
+            <hr>
+            <% include template/footer.ejs %>
+
+        </div>
+        <!-- /.container -->
+        
+	    
+	    <!--JS -->
+	    <% include template/jsdefaults.ejs %>
+	    
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <% include template/auth_header.ejs %>
+    </head>
+    <body>
+        
+        <div id="wrapper">
+
+            <% include template/auth_nav.ejs %>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Chuyển trang</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <% if(typeof(returnMes) !== 'undefined'){ %>
+                        
+                        <% returnMes.forEach(function (mes){ %>
+                            <div class="col-lg-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">Thông báo</div>
+                                    <div class="panel-body">
+                                        <%= mes.msg %>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <%- mes.url %>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        <% }); %>
+                                        
+                    <% } %>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        
+	    <% include template/auth_jsdefaults.ejs %>
+	    
+    </body>
+</html>

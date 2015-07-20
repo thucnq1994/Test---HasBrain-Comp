@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <% include template/auth_header.ejs %>
+    </head>
+    <body>
+        
+        <div id="wrapper">
+
+            <% include template/auth_nav.ejs %>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Cập nhật người dùng</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <% if(typeof(userList) !== 'undefined'){ %>
+                            
+                    <% userList.forEach(function (user){ %>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Thông tin người dùng
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form role="form" method="post" name="frmUEdit">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Tên tài khoản</label>
+                                                        <input type="hidden" name="id" value="<%= user.id %>">
+                                                        <input class="form-control" name="username" value="<%= user.username %>" disabled>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Họ tên</label>
+                                                        <input class="form-control" name="realname" value="<%= user.realname %>">
+                                                    </div>
+                                                </div>
+                                                <!-- /.col-lg-6 (nested) -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Mật khẩu</label>
+                                                        <input class="form-control" name="password" type="password">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Quyền hạn</label>
+                                                        <select class="form-control" name="user_group">
+                                                            <option value="0" <% if(user.user_group == 0){ %>selected<% } %>>Người dùng</option>
+                                                            <option value="1" <% if(user.user_group == 1){ %>selected<% } %>>Quản trị viên</option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary" name="btnOK">Đồng ý</button>
+                                                    <button type="reset" class="btn btn-default">Nhập lại</button>
+                                                </div>
+                                                <!-- /.col-lg-6 (nested) -->
+                                            </form>
+                                        </div>
+                                        <!-- /.row (nested) -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+                    <% }); %>
+                        
+                <% } %>
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        
+	    <% include template/auth_jsdefaults.ejs %>
+	    
+    </body>
+</html>

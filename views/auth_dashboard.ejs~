@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <% include template/auth_header.ejs %>
+    </head>
+    <body>
+        
+        <div id="wrapper">
+
+            <% include template/auth_nav.ejs %>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Dashboard</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">...</div>
+                                        <div>Thành viên</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/auth/ulist.html">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Xem chi tiết</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-cubes fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">...</div>
+                                        <div>Sản phẩm</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="/auth/plist.html">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Xem chi tiết</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        
+	    <% include template/auth_jsdefaults.ejs %>
+	    
+    </body>
+</html>

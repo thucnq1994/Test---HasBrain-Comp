@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <% include template/auth_header.ejs %>
+    </head>
+    <body>
+        
+        <div id="wrapper">
+
+            <% include template/auth_nav.ejs %>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Thêm sản phẩm mới</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <% if(typeof(productList) !== 'undefined'){ %>
+                            
+                    <% productList.forEach(function (product){ %>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Thông tin sản phẩm
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form role="form" method="post" name="frmPEdit">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Tên sản phẩm</label>
+                                                        <input type="hidden" name="id" value="<%= product.id %>">
+                                                        <input class="form-control" name="name" value="<%= product.name %>">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Mô tả ngắn</label>
+                                                        <textarea class="form-control" rows="3" name="desc"><%= product.desc %></textarea>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Giá</label>
+                                                    </div>
+                                                    <div class="form-group input-group">
+                                                        <span class="input-group-addon">$</span>
+                                                        <input type="text" class="form-control" name="price" value="<%= product.price %>">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Ngày nhập</label>
+                                                        <input class="form-control" type="text" value="<%= product.date_added %>" disabled="">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Người nhập</label>
+                                                        <input class="form-control" type="text" value="<%= product.user_added %>" disabled="">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Lần sửa cuối</label>
+                                                        <input class="form-control" type="text" value="<%= product.date_updated %>" disabled="">
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Người sửa cuối</label>
+                                                        <input class="form-control" type="text" value="<%= product.user_updated %>" disabled="">
+                                                    </div>
+                                                </div>
+                                                <!-- /.col-lg-6 (nested) -->
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label>Thư mục</label>
+                                                        <select class="form-control" name="catid">
+                                                            <% if(typeof(categoryList) !== 'undefined'){ %>
+                                
+                                                                <% categoryList.forEach(function (category){ %>
+                                                                
+                                                                    <option value="<%= category.id %>" <% if(product.catid == category.id){ %>selected<% } %>><%= category.name %></option>
+                                                                
+                                                                <% }); %>
+                                                            
+                                                            <% } %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Mô tả dài</label>
+                                                        <textarea class="form-control" rows="3" name="content"><%= product.content %></textarea>
+                                                    </div>
+                                                    
+                                                    <button type="submit" class="btn btn-primary" name="btnOK">Đồng ý</button>
+                                                    <button type="reset" class="btn btn-default">Nhập lại</button>
+                                                </div>
+                                                <!-- /.col-lg-6 (nested) -->
+                                            </form>
+                                        </div>
+                                        <!-- /.row (nested) -->
+                                    </div>
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+                    <% }); %>
+                        
+                <% } %>
+            </div>
+            <!-- /#page-wrapper -->
+
+        </div>
+        <!-- /#wrapper -->
+        
+	    <% include template/auth_jsdefaults.ejs %>
+	    
+    </body>
+</html>

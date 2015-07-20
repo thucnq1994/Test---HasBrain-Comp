@@ -1,0 +1,10 @@
+var mySqlConnection = {
+    connectionString : {
+        host     : 'localhost',
+        user     : 'root',
+        password : '123456',
+        database : 'test'
+    }
+};
+
+exports.mySqlConnection = mySqlConnection;

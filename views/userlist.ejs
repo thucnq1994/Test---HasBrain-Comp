@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <% include template/header.ejs %>
+    </head>
+    <body>
+        
+        <div class="container">
+          <h2>User list</h2>           
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Realname</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% if(typeof(userlist) !== 'undefined'){ %>
+                    <% userlist.forEach(function(user) { %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.realname %></td>
+                        </tr>
+                    <% }); %>
+              
+                <% } %>
+            </tbody>
+          </table>
+        </div>
+        
+	    <% include template/footer.ejs %>
+	    <!--JS -->
+	    <% include template/jsdefaults.ejs %>
+	    
+    </body>
+</html>
